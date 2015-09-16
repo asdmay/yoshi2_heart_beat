@@ -55,7 +55,6 @@ void setup() {
 /*-----------------------------------------------------------------*/
 
 void loop() {
-
 	// 静電容量の検出
 	capValue = SenseCap() / toSmall;
 
@@ -71,10 +70,19 @@ void loop() {
 
         // タッチされた場合の処理
         if(touchStatus == true){
-          digitalWrite(motorPin,HIGH);
-          delay(100);
-          digitalWrite(motorPin,LOW);
-          delay(100);
+          /* ねずみの心拍
+          if(millis() % 1000 < 100) {
+            digitalWrite(motorPin, HIGH);
+          } else {
+            digitalWrite(motorPin, LOW);
+          }
+          */
+          // ゾウの心拍
+          if(millis() % 3000 < 100) {
+            digitalWrite(motorPin, HIGH);
+          } else {
+            digitalWrite(motorPin, LOW);
+          }
         }
           
 
