@@ -18,8 +18,8 @@
 /* 静電容量センサ */
 const int transPin = 2;			// 送信用デジタルピンの番号
 const int recievePin = 3;		// 受信用デジタルピンの番号
-const int thresholdHigh = 200;		// タッチ状態を識別するしきい値(上)
-const int thresholdLow = 150;		// タッチ状態を識別するしきい値(下)
+const int thresholdHigh = 80;		// タッチ状態を識別するしきい値(上)
+const int thresholdLow = 50;		// タッチ状態を識別するしきい値(下)
 const int toSmall = 1;			// 検出された値が大きすぎる場合
 long capValue = 0;			// 検出された静電容量の値
 boolean touchStatus = false;		// タッチ状態
@@ -70,19 +70,21 @@ void loop() {
 
         // タッチされた場合の処理
         if(touchStatus == true){
-          /* ねずみの心拍
-          if(millis() % 1000 < 100) {
+          // ねずみの心拍
+          if(millis() % 200 < 100) {
             digitalWrite(motorPin, HIGH);
           } else {
             digitalWrite(motorPin, LOW);
           }
-          */
+
           // ゾウの心拍
-          if(millis() % 3000 < 100) {
+          /*if(millis() % 3200 < 200) {
             digitalWrite(motorPin, HIGH);
           } else {
             digitalWrite(motorPin, LOW);
-          }
+          }*/
+        }else{
+          digitalWrite(motorPin, LOW);
         }
           
 
